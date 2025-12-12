@@ -11,7 +11,8 @@ Provided below is a dashboard containing visuals of all data findings as well as
 
 
 
-<img width="1212" height="883" alt="Screenshot 2025-12-11 at 7 04 00 PM" src="https://github.com/user-attachments/assets/e2b31d00-ef33-4b3b-a8e7-4d313d31cabd" />
+<img width="1536" height="1024" alt="ChatGPT Image Dec 12, 2025, 10_06_54 AM" src="https://github.com/user-attachments/assets/1f8a464d-8273-4d72-812d-72860e42ea93" />
+
 
 
 
@@ -95,7 +96,6 @@ This time-series plot tracks the maximum drawdown of XLF, showing the worst peak
 <img width="908" height="492" alt="Screenshot 2025-12-12 at 9 42 15 AM" src="https://github.com/user-attachments/assets/135d62db-12b1-42af-9fbf-15fc7c69906e" />
 
 
-Interpretation
 
 Deep drawdowns correlate with macro stress (pandemic, rate shocks, liquidity issues).
 
@@ -115,7 +115,6 @@ This chart shows how the 30-day rolling Sharpe ratio of XLF fluctuates over time
 <img width="914" height="467" alt="Screenshot 2025-12-12 at 9 43 29 AM" src="https://github.com/user-attachments/assets/a3971fbc-a6b9-46bd-b483-876c2d3d153e" />
 
 
-Interpretation
 
 Positive Sharpe spikes indicate brief windows of strong outperformance relative to risk.
 
@@ -137,7 +136,6 @@ The histogram illustrates the distribution of daily percentage returns for XLF f
 
 
 
-Interpretation
 
 Most daily moves are small and stable, typical of a large diversified sector ETF.
 
@@ -150,7 +148,7 @@ Tail-risk patterns align with systemic risk events such as credit tightening or 
 ---
 
 
-## 🤖 AI Integration — Automated Commentary & Executive Summaries
+## AI Integration — Automated Commentary & Executive Summaries
 
 I decided to includes an automated, AI-driven commentary system in this project that converts raw market metrics into executive-grade insights. The module calls an LLM (OpenAI) to generate a polished executive summary for presentations or emailing stakeholders.
 
@@ -159,6 +157,11 @@ I decided to includes an automated, AI-driven commentary system in this project 
 **Files / functions:**
 - `ai_insights.py` — contains `risk_commentary()` and `executive_insights()` functions (rule-based).
 - `llm_summary()` — optional wrapper to call OpenAI for a concise human-level paragraph (requires `OPENAI_API_KEY`).
+
+
+---
+
+## Python Snippet for Analysis
 
 
 from openai import OpenAI
@@ -183,6 +186,11 @@ def generate_ai_summary(text: str) -> str:
     return response.choices[0].message["content"]
 
 
+
+
+
+
+
 The following is a snippet of the AI integration using OpenAI API token. The full implementation, including data processing, visualization, and AI-generated commentary, is available in the uploaded Jupyter Notebook (.ipynb) for anyone to review and reproduce.
 
 
@@ -192,9 +200,11 @@ The following is a snippet of the AI integration using OpenAI API token. The ful
 
 This analysis reveals several critical relationships within the banking sector. The strongest driver of risk sentiment is market volatility, captured by the VIX, which consistently shows a negative correlation with XLF performance. When volatility rises, banking equities tend to weaken. Treasury yields, particularly the 10-year, also demonstrate a meaningful relationship with XLF, showing that changes in interest rate expectations can materially impact sector performance.
 
-Rolling metrics such as beta, Sharpe ratio, and drawdowns provide deeper insight into how risk and return characteristics shift over time. The drawdown analysis highlights periods of structural stress, while the Sharpe ratio reveals extended intervals where the risk-adjusted reward profile deteriorated. These findings support a view that banking equities behave cyclically and are highly sensitive to macroeconomic conditions.
+Rolling metrics such as beta, Sharpe ratio, and drawdowns provide deeper insight into how risk and return characteristics shift over time. The drawdown analysis highlights periods of structural stress, while the Sharpe ratio reveals extended intervals where the risk-adjusted reward profile deteriorated. These findings support a view that banking equities behave cyclically and are highly sensitive to macroeconomic conditions. 
 
 The AI-generated commentary further enhances interpretability by summarizing real-time market states, correlations, and directional risk indicators. This makes the framework suitable for both daily monitoring and long-term strategic reporting.
+
+
 ---
 
 ### Recommendations
