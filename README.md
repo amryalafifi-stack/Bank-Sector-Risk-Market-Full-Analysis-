@@ -30,9 +30,8 @@ Drawdowns show structurally rising tail-risk, with extreme declines clustered ar
 
 Risk-adjusted returns (Sharpe ratio) are volatile, highlighting unstable reward-to-risk conditions for financial sector investors.
 
-The dashboard allows portfolio managers, market analysts, and risk strategists to assess sector fragility, stress-test positioning, and evaluate macro-sensitivity over time.
 
-
+---
 
 
 
@@ -60,7 +59,7 @@ Weak inverse relationship.
 
 ---
 
-#### 2. Rolling Risk Metrics
+#### 2. Rolling 30-Day Beta of XLF vs. VIX
 
 This chart shows the rolling 30-day beta of the XLF ETF (financial sector) relative to the VIX, the market’s “fear index.” A beta of +1 means XLF moves in perfect positive relation to the VIX (very rare). The chart shows XLF beta usually fluctuating between -0.3 and +0.2, rarely spiking above that.
 
@@ -77,41 +76,48 @@ When beta trends upward toward zero or positive:
 It suggests financials are moving more in sync with fear, usually a sign of systemic stress (e.g., 2020).
 
 
-
-<img width="528" height="468" alt="Screenshot 2025-09-09 at 9 45 48 AM" src="https://github.com/user-attachments/assets/75c861e6-b946-400a-8730-36edd8ae3de3" />
-
-
----
-
-#### 3. Customer Churn Risk Score Distribution
-The churn risk score distribution segments customers based on their likelihood to churn. The data shows:
-
-- Majority of customers fall into the **"Safe"** category (low churn risk)  
-- Smaller number are on the **"Watchlist"** (moderate risk)  
-- A critical, small group is **"High Risk"** (highest probability of churning)  
-
-This segmentation allows the business to efficiently allocate resources, focusing proactive retention efforts on the customers most likely to leave.  
+<img width="959" height="521" alt="Screenshot 2025-12-12 at 9 39 30 AM" src="https://github.com/user-attachments/assets/2f9bc51a-eebf-40b2-a4dd-ef03c2613efc" />
 
 
-
-<img width="696" height="472" alt="Screenshot 2025-09-09 at 9 46 06 AM" src="https://github.com/user-attachments/assets/f68d7961-142a-4d56-b75d-101a9c29d69c" />
 
 
 
 
 ---
 
-#### 4. Top 10 Features Driving Churn
-This bar chart visualizes the factors with the greatest influence on the model's ability to predict churn.  
+#### 3. Max Drawdown Over Time (XLF)
+This time-series plot tracks the maximum drawdown of XLF, showing the worst peak-to-trough decline experienced at any moment from 2016 to 2026. The shaded red regions deepen whenever XLF falls significantly from its prior high. Drawdowns range from mild dips to deep multi-month declines, with several notable periods corresponding to major market stress events.
 
-- **Horizontal bars** show each feature's "importance" score, ranking how much it contributes to the model's predictions.  
-- **Key insights:** Age is by far the most important factor, followed by Estimated Salary and Credit Score.  
+Interpretation
 
-This insight is critical for creating targeted business strategies, as it shows which aspects of customer data most influence churn outcomes.  
+Deep drawdowns correlate with macro stress (pandemic, rate shocks, liquidity issues).
+
+Prolonged drawdowns point to underlying sector-specific weakness.
+
+Frequent moderate drawdowns demonstrate typical cyclicality in financial stocks.
 
 
-<img width="805" height="470" alt="Screenshot 2025-09-09 at 9 46 16 AM" src="https://github.com/user-attachments/assets/df15091c-61f6-4d53-bf34-bafd52f23b12" />
 
+<img width="908" height="492" alt="Screenshot 2025-12-12 at 9 42 15 AM" src="https://github.com/user-attachments/assets/135d62db-12b1-42af-9fbf-15fc7c69906e" />
+
+
+
+
+---
+
+#### 4. Rolling 30-Day Sharpe Ratio (XLF)
+This chart shows how the 30-day rolling Sharpe ratio of XLF fluctuates over time. The Sharpe ratio represents risk-adjusted return, and the values swing constantly both above and below zero, sometimes reaching extreme positive or negative spikes. This oscillation highlights how unstable short-term risk-adjusted performance is within the banking sector.
+
+Interpretation
+
+Positive Sharpe spikes indicate brief windows of strong outperformance relative to risk.
+
+Negative spikes show periods where XLF suffered poor returns relative to volatility.
+
+High variability reinforces that financials react strongly to macroeconomic shifts.
+
+
+<img width="914" height="467" alt="Screenshot 2025-12-12 at 9 43 29 AM" src="https://github.com/user-attachments/assets/a3971fbc-a6b9-46bd-b483-876c2d3d153e" />
 
 
 
