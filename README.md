@@ -200,8 +200,6 @@ The following is a snippet of the AI integration using OpenAI API token. The ful
 
 This analysis reveals several critical relationships within the banking sector. The strongest driver of risk sentiment is market volatility, captured by the VIX, which consistently shows a negative correlation with XLF performance. When volatility rises, banking equities tend to weaken. Treasury yields, particularly the 10-year, also demonstrate a meaningful relationship with XLF, showing that changes in interest rate expectations can materially impact sector performance.
 
-Rolling metrics such as beta, Sharpe ratio, and drawdowns provide deeper insight into how risk and return characteristics shift over time. The drawdown analysis highlights periods of structural stress, while the Sharpe ratio reveals extended intervals where the risk-adjusted reward profile deteriorated. These findings support a view that banking equities behave cyclically and are highly sensitive to macroeconomic conditions. 
-
 The AI-generated commentary further enhances interpretability by summarizing real-time market states, correlations, and directional risk indicators. This makes the framework suitable for both daily monitoring and long-term strategic reporting.
 
 
