@@ -20,39 +20,61 @@ Provided below is a dashboard containing visuals of all data findings as well as
 ## Executive Summary
 ### Overview of Findings
 
-This analysis shows that the financial sector is highly sensitive to changes in volatility and interest rates.
-XLF demonstrates a strong negative relationship with the VIX, indicating that financial stocks tend to underperform during periods of heightened uncertainty.
-Additionally, rolling metrics such as beta, Sharpe ratio, and drawdown highlight how risk evolves dynamically under different macro conditions.
+This dashboard provides a comprehensive view of risk conditions in the U.S. banking sector, using XLF (Financial Sector ETF) as a proxy for financial industry performance. It integrates volatility (VIX), interest rates (10Y Treasury yield), market risk premia, and historical return behavior to understand how macro-level forces influence banking sector stability.
 
+The analysis reveals three core insights:
 
-<img width="1574" height="628" alt="Screenshot 2025-09-09 at 12 46 02 PM" src="https://github.com/user-attachments/assets/2960adf2-122e-4f9d-a4f6-7a4d276fe54a" />
+XLF’s rolling beta vs VIX has been consistently negative, meaning financials often move opposite volatility — a defensive dynamic useful for hedging.
 
+Drawdowns show structurally rising tail-risk, with extreme declines clustered around macro shocks (COVID, rate hikes, banking stress).
 
-### Category 1: Model Performance & Comparison
+Risk-adjusted returns (Sharpe ratio) are volatile, highlighting unstable reward-to-risk conditions for financial sector investors.
 
-#### 1. Logistic Regression Model Performance
-Logistic Regression is a foundational statistical model used for binary classification problems like predicting churn. It estimates the probability that a customer will churn based on a set of independent variables. The model's performance can be evaluated using a Receiver Operating Characteristic (ROC) curve, which shows how well it can distinguish between churners and non-churners.
-
-In this analysis, the Logistic Regression model served as a benchmark for comparison. It achieved an **AUC of 0.76**, indicating that it performs better than random chance. However, as the ROC curve shows, it is outperformed by the more advanced Random Forest model.  
+The dashboard allows portfolio managers, market analysts, and risk strategists to assess sector fragility, stress-test positioning, and evaluate macro-sensitivity over time.
 
 
 
 
-<img width="539" height="468" alt="Screenshot 2025-09-09 at 9 45 56 AM" src="https://github.com/user-attachments/assets/4ae30b4b-ebb6-453c-9c31-b99a3b35612b" />
+
+
+#### 1. Correlation Heatmap
+The heatmap reveals the core relationships between XLF, VIX, and TNX.
+XLF and VIX exhibit a strong inverse correlation, while XLF maintains a mild positive correlation with the 10-Year yield.
+This reflects typical market behaviour: financial stocks weaken in risk-off environments and strengthen when interest rates rise.
+
+Findings:
+
+XLF vs VIX = –0.60
+Strong inverse correlation (risk-off hurts banks).
+
+XLF vs TNX = +0.40
+Rising yields generally help bank profitability (better lending margins).
+
+VIX vs TNX = –0.18
+Weak inverse relationship.
+
+
+<img width="945" height="778" alt="Screenshot 2025-12-12 at 9 33 37 AM" src="https://github.com/user-attachments/assets/0ca28a7e-f6af-4325-b7c0-227a3e7a9fd7" />
 
 
 
 ---
 
-#### 2. Confusion Matrix - Random Forest
-The confusion matrix shows how well the Random Forest model predicts customer churn:
+#### 2. Rolling Risk Metrics
 
-- **True Negatives:** 1,536 (customers correctly predicted to stay)  
-- **True Positives:** 185 (customers correctly predicted to churn)  
-- **False Positives:** 57 (customers incorrectly predicted to churn)  
-- **False Negatives:** 222 (customers incorrectly predicted to stay)  
+This chart shows the rolling 30-day beta of the XLF ETF (financial sector) relative to the VIX, the market’s “fear index.” A beta of +1 means XLF moves in perfect positive relation to the VIX (very rare). The chart shows XLF beta usually fluctuating between -0.3 and +0.2, rarely spiking above that.
 
-This indicates that while the model is good at identifying customers who will stay, it struggles more with identifying customers who will leave.  
+XLF has a consistently negative or near-zero beta with the VIX.
+
+This means:
+
+When VIX spikes (fear rises) → XLF generally falls, but the relationship is weak and inconsistent.
+
+Financials are not strongly reactive to volatility spikes compared to tech or small-cap sectors.
+
+When beta trends upward toward zero or positive:
+
+It suggests financials are moving more in sync with fear, usually a sign of systemic stress (e.g., 2020).
 
 
 
