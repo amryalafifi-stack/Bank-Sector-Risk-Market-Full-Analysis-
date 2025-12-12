@@ -41,6 +41,11 @@ The heatmap reveals the core relationships between XLF, VIX, and TNX.
 XLF and VIX exhibit a strong inverse correlation, while XLF maintains a mild positive correlation with the 10-Year yield.
 This reflects typical market behaviour: financial stocks weaken in risk-off environments and strengthen when interest rates rise.
 
+
+
+<img width="945" height="778" alt="Screenshot 2025-12-12 at 9 33 37 AM" src="https://github.com/user-attachments/assets/0ca28a7e-f6af-4325-b7c0-227a3e7a9fd7" />
+
+
 Findings:
 
 XLF vs VIX = –0.60
@@ -53,15 +58,18 @@ VIX vs TNX = –0.18
 Weak inverse relationship.
 
 
-<img width="945" height="778" alt="Screenshot 2025-12-12 at 9 33 37 AM" src="https://github.com/user-attachments/assets/0ca28a7e-f6af-4325-b7c0-227a3e7a9fd7" />
-
-
 
 ---
 
 #### 2. Rolling 30-Day Beta of XLF vs. VIX
 
 This chart shows the rolling 30-day beta of the XLF ETF (financial sector) relative to the VIX, the market’s “fear index.” A beta of +1 means XLF moves in perfect positive relation to the VIX (very rare). The chart shows XLF beta usually fluctuating between -0.3 and +0.2, rarely spiking above that.
+
+
+
+<img width="959" height="521" alt="Screenshot 2025-12-12 at 9 39 30 AM" src="https://github.com/user-attachments/assets/2f9bc51a-eebf-40b2-a4dd-ef03c2613efc" />
+
+
 
 XLF has a consistently negative or near-zero beta with the VIX.
 
@@ -76,17 +84,16 @@ When beta trends upward toward zero or positive:
 It suggests financials are moving more in sync with fear, usually a sign of systemic stress (e.g., 2020).
 
 
-<img width="959" height="521" alt="Screenshot 2025-12-12 at 9 39 30 AM" src="https://github.com/user-attachments/assets/2f9bc51a-eebf-40b2-a4dd-ef03c2613efc" />
-
-
-
-
-
 
 ---
 
 #### 3. Max Drawdown Over Time (XLF)
 This time-series plot tracks the maximum drawdown of XLF, showing the worst peak-to-trough decline experienced at any moment from 2016 to 2026. The shaded red regions deepen whenever XLF falls significantly from its prior high. Drawdowns range from mild dips to deep multi-month declines, with several notable periods corresponding to major market stress events.
+
+
+
+<img width="908" height="492" alt="Screenshot 2025-12-12 at 9 42 15 AM" src="https://github.com/user-attachments/assets/135d62db-12b1-42af-9fbf-15fc7c69906e" />
+
 
 Interpretation
 
@@ -98,15 +105,15 @@ Frequent moderate drawdowns demonstrate typical cyclicality in financial stocks.
 
 
 
-<img width="908" height="492" alt="Screenshot 2025-12-12 at 9 42 15 AM" src="https://github.com/user-attachments/assets/135d62db-12b1-42af-9fbf-15fc7c69906e" />
-
-
-
-
 ---
 
 #### 4. Rolling 30-Day Sharpe Ratio (XLF)
 This chart shows how the 30-day rolling Sharpe ratio of XLF fluctuates over time. The Sharpe ratio represents risk-adjusted return, and the values swing constantly both above and below zero, sometimes reaching extreme positive or negative spikes. This oscillation highlights how unstable short-term risk-adjusted performance is within the banking sector.
+
+
+
+<img width="914" height="467" alt="Screenshot 2025-12-12 at 9 43 29 AM" src="https://github.com/user-attachments/assets/a3971fbc-a6b9-46bd-b483-876c2d3d153e" />
+
 
 Interpretation
 
@@ -117,53 +124,85 @@ Negative spikes show periods where XLF suffered poor returns relative to volatil
 High variability reinforces that financials react strongly to macroeconomic shifts.
 
 
-<img width="914" height="467" alt="Screenshot 2025-12-12 at 9 43 29 AM" src="https://github.com/user-attachments/assets/a3971fbc-a6b9-46bd-b483-876c2d3d153e" />
+
+---
 
 
+#### 5. Distribution of Daily Returns (XLF)
+The histogram illustrates the distribution of daily percentage returns for XLF from 2016–2026. The shape resembles a bell curve centred around zero, with most returns clustering near the middle. However, the distribution also features wider tails, indicating a higher-than-normal frequency of large positive or negative daily moves compared with a standard normal distribution.
+
+
+
+<img width="819" height="444" alt="Screenshot 2025-12-12 at 9 45 47 AM" src="https://github.com/user-attachments/assets/68558144-7b55-4ccb-b1b3-78d773658341" />
+
+
+
+Interpretation
+
+Most daily moves are small and stable, typical of a large diversified sector ETF.
+
+Fat tails signal vulnerability to outsized shocks during crises.
+
+Tail-risk patterns align with systemic risk events such as credit tightening or liquidity stress.
+
+
+
+---
+
+
+## 🤖 AI Integration — Automated Commentary & Executive Summaries
+
+I decided to includes an automated, AI-driven commentary system in this project that converts raw market metrics into executive-grade insights. The module calls an LLM (OpenAI) to generate a polished executive summary for presentations or emailing stakeholders.
+
+**Why this matters:** The feature demonstrates production-ready automation: the model codifies domain rules, flags risk conditions, and creates a shareable narrative — a capability interviewers at banks and asset managers value highly.
+
+**Files / functions:**
+- `ai_insights.py` — contains `risk_commentary()` and `executive_insights()` functions (rule-based).
+- `llm_summary()` — optional wrapper to call OpenAI for a concise human-level paragraph (requires `OPENAI_API_KEY`).
+
+
+from openai import OpenAI
+
+client = OpenAI()
+
+def generate_ai_summary(text: str) -> str:
+    """
+    Sends analysis text (market conditions, correlations, indicators)
+    to the LLM and returns a polished executive-level summary.
+    """
+    response = client.chat.completions.create(
+        model="gpt-4.1-mini",
+        messages=[
+            {"role": "system", "content": "You are a financial analyst."},
+            {"role": "user", "content": f"Summarise this analysis: {text}"}
+        ],
+        max_tokens=200,
+        temperature=0.2
+    )
+
+    return response.choices[0].message["content"]
+
+
+The following is a snippet of the AI integration using OpenAI API token. The full implementation, including data processing, visualization, and AI-generated commentary, is available in the uploaded Jupyter Notebook (.ipynb) for anyone to review and reproduce.
 
 
 ## Final Assumptions & Recommendations
 
 ### Key Drivers & Predictive Insights
-Based on the **Random Forest model**, which proved to be the most effective predictive tool for this project, we identified the primary drivers of customer churn:  
 
-- **Age** is by far the most significant factor.  
-- **Estimated Salary** and **Credit Score** follow as the next strongest drivers.  
+This analysis reveals several critical relationships within the banking sector. The strongest driver of risk sentiment is market volatility, captured by the VIX, which consistently shows a negative correlation with XLF performance. When volatility rises, banking equities tend to weaken. Treasury yields, particularly the 10-year, also demonstrate a meaningful relationship with XLF, showing that changes in interest rate expectations can materially impact sector performance.
 
-This insight is crucial for targeting specific demographics in retention efforts.  
+Rolling metrics such as beta, Sharpe ratio, and drawdowns provide deeper insight into how risk and return characteristics shift over time. The drawdown analysis highlights periods of structural stress, while the Sharpe ratio reveals extended intervals where the risk-adjusted reward profile deteriorated. These findings support a view that banking equities behave cyclically and are highly sensitive to macroeconomic conditions.
 
-The model demonstrates strong performance with an **AUC of 0.85**, but the **confusion matrix** highlights a critical limitation:  
-
-- **Correctly identified non-churners (True Negatives):** 1,536  
-- **Correctly identified churners (True Positives):** 185  
-- **False Positives:** 57  
-- **False Negatives:** 222  
-
-This means that while the model is strong at predicting customers who will stay, it struggles to capture a significant portion of those likely to churn.
-
+The AI-generated commentary further enhances interpretability by summarizing real-time market states, correlations, and directional risk indicators. This makes the framework suitable for both daily monitoring and long-term strategic reporting.
 ---
 
 ### Recommendations
-Based on these insights, the following actions are recommended:
 
-1. **Implement Targeted Retention Campaigns**  
-   Since age is the strongest churn driver, marketing and sales teams should develop campaigns tailored to the most at-risk age groups.  
+Strengthen volatility monitoring. given the consistent negative relationship between VIX and XLF, volatility should be a primary early-warning indicator. Significant spikes above historical norms often precede declines in banking equities and should trigger heightened risk review.
 
-2. **Improve Model Recall**  
-   Focus on refining the model to better identify actual churners. Explore alternative algorithms (e.g., Gradient Boosting, XGBoost) or adjust hyperparameters to reduce false negatives.  
+Integrate rate-sensitivity dashboards. The relationship between XLF and Treasury yields suggests that interest-rate-driven macro shocks meaningfully influence bank performance. A yield-monitoring module tied to XLF beta or return sensitivities would help anticipate sector rotations.
 
-3. **Tiered Retention Strategy**  
-   Use the churn risk score for segmentation:  
-   - **Safe Group:** Light-touch retention monitoring.  
-   - **Watchlist:** Automated, proactive interventions.  
-   - **High Risk:** Personalised, high-priority outreach.  
+Use rolling metrics for regime detection. Rolling beta, Sharpe ratio, and drawdowns effectively highlight shifts in risk regimes. Declining Sharpe ratios, rising drawdowns, or compression in return distributions can signal deteriorating conditions before the broader market reacts.
 
----
-
-### Assumptions and Caveats
-The following assumptions were made during the analysis:
-
-- **Data Integrity:** It was assumed that the dataset accurately represents customer behaviour.  
-- **Model Relevance:** AUC was considered the most important performance metric.  
-- **Thresholds:** Risk score cut-offs (Safe <0.3, Watchlist 0.3–0.7, High Risk >0.7) were assumed to be optimal for interventions.  
-- **Causality vs. Correlation:** Feature importance values were treated as indicators of causal drivers, though in reality they represent correlation.  
+Finally, automate daily executive summaries. The OpenAI-powered analysis demonstrates the value of automated narrative generation. Integrating this into a dashboard or reporting pipeline could help teams receive professional summaries without manual interpretation.
